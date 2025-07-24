@@ -1,10 +1,22 @@
 import React from 'react'
-import Navbar from './components/Navbar' // Adjust the path based on your file structure
+import Navbar from './components/Navbar' 
+import { Route, Routes, useLocation } from 'react-router-dom'
+import Home from './pages/Home';
 
 const App = () => {
+
+
+  const isOwnerPath = useLocation().pathname.includes("owner");
+
   return (
     <div>
-      <Navbar />
+     { !isOwnerPath && <Navbar />  }
+     <div className='min-h-[70vh]'>
+      <Routes>
+        <Route  path='/' element={<Home/>} />
+      </Routes>
+
+     </div>
     </div>
   )
 }
